@@ -1,8 +1,9 @@
 # image_compression
 
-This assignment will helped us gain an understanding of issues that relate to image compression, by comparing and contrasting the frequency space representations using the Discrete Cosine Transform and the Discrete Wavelet Transform. We  read an RGB file and convert the file to an 8x8 block based DCT representation (as used in the JPEG implementation) and a DWT representation (as used in the JPEG2000 implementation). Depending on the second parameter n we decode both the representations using only n coefficients and display them side to side to compare your results. Remember all input files will have the same format as explained to the class website. They will be of size 512x512 (intentionally square and a power of 2 to facilitate easy encoding and decoding). Your algorithm, whether encoding or decoding, should work on each channel independently.
+> This assignment will helped us gain an understanding of issues that relate to image compression, by comparing and contrasting the frequency space representations using the Discrete Cosine Transform and the Discrete Wavelet Transform. We  read an RGB file and convert the file to an 8x8 block based DCT representation (as used in the JPEG implementation) and a DWT representation (as used in the JPEG2000 implementation). 
+Depending on the second parameter n we decode both the representations using only n coefficients and display them side to side to compare your results. Remember all input files will have the same format as explained to the class website. They will be of size 512x512 (intentionally square and a power of 2 to facilitate easy encoding and decoding). Your algorithm, whether encoding or decoding, should work on each channel independently.
 
-Input to my program will be 2 parameters where:
+> Input to my program will be 2 parameters where:
 •	The first parameter is the name of the input image file. (file format description provided and is similar to the first assignment format of RGB)
 •	The second parameter is an integral number that defines the number of coefficients to use for decoding. The interpretation of this parameter of decoding is different for both the DCT and DWT cases so as to use the same number of coefficients. Please see the implementation section for an explanation
  
