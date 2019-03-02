@@ -32,6 +32,7 @@ Based on the input parameter of the number of coefficients to use, you need to a
 
 - [x] For a DWT, you want to select the first n coefficients in a zig zag order for the image where n is the number of coefficients given as input. DWT encodes the entire image so, here you will use the first n coefficients in zig zag order. The remaining coefficients will be set to zero prior to decoding. The zig zag ordering naturally prioritizes the low frequency coefficients compared to the higher frequency coefficients. Remember to follow the reverse sequence when decoding, that is first column and second row.
 
+![Demo](https://github.com/mukeshkdangi/image_compression/blob/master/Webp.net-gifmaker.gif)
 - [x] Progressive Analysis of DCT vs DWT (40 points)
 Here you will create an animation which will take incremental steps of decoding in order to study the output quality of your DCT vs DWT implementation. For this invocation we will put n= -1, because the incremental number of coefficients are predefined as shown below.
 
