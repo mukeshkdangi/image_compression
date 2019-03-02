@@ -40,12 +40,25 @@ public class ImageCompression {
     private static int MAX_PIXEL_VAL = 255;
     private static int BLOCK_SIZE = 8;
     private static float ONE_BY_4 = (float) 1 / 4;
+    private static int BASE_COEFFICINT = 4096;
 
 
     BufferedImage originalImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     BufferedImage DCTImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+    double[][] redChannelMat_DWT = new double[HEIGHT][WIDTH];
+    double[][] greenChannelMat_DWT = new double[HEIGHT][WIDTH];
+    double[][] blueChannelMat_DWT = new double[HEIGHT][WIDTH];
+    
     BufferedImage DWTImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
+    int[][] redChannelMat = new int[HEIGHT][WIDTH];
+    int[][] greenChannelMat = new int[HEIGHT][WIDTH];
+    int[][] blueChannelMat = new int[HEIGHT][WIDTH];
+
+    int[][] redChannelMat_DCT = new int[HEIGHT][WIDTH];
+    int[][] greenChannelMat_DCT = new int[HEIGHT][WIDTH];
+    int[][] blueChannelMat_DCT = new int[HEIGHT][WIDTH];
 
     JFrame imageFrame = new JFrame();
     GridBagLayout gridBagLayout = new GridBagLayout();
@@ -59,17 +72,6 @@ public class ImageCompression {
 
     static double[][] cosineBlockMatrix = new double[BLOCK_SIZE][BLOCK_SIZE];
 
-    int[][] redChannelMat = new int[HEIGHT][WIDTH];
-    int[][] greenChannelMat = new int[HEIGHT][WIDTH];
-    int[][] blueChannelMat = new int[HEIGHT][WIDTH];
-
-    int[][] redChannelMat_DCT = new int[HEIGHT][WIDTH];
-    int[][] greenChannelMat_DCT = new int[HEIGHT][WIDTH];
-    int[][] blueChannelMat_DCT = new int[HEIGHT][WIDTH];
-
-    double[][] redChannelMat_DWT = new double[HEIGHT][WIDTH];
-    double[][] greenChannelMat_DWT = new double[HEIGHT][WIDTH];
-    double[][] blueChannelMat_DWT = new double[HEIGHT][WIDTH];
 
     int[][] redChannelMat_IDCT = new int[HEIGHT][WIDTH];
     int[][] greenChannelMat_IDCT = new int[HEIGHT][WIDTH];
@@ -125,7 +127,7 @@ public class ImageCompression {
             }
 
             if (coefficientNum > 0) {
-                int m = coefficientNum / 4096;
+                int m = coefficientNum / BASE_COEFFICINT;
 
                 performDCT_TransformQuantize(redChannelMat, greenChannelMat, blueChannelMat, m);
                 performInverseDCTTransform();
@@ -140,10 +142,10 @@ public class ImageCompression {
                 showRecoveredImageFromDCTDWT_Tranformation(0);
             } else {
                 int iteration = 1;
-                for (int idx = 4096; idx <= WIDTH * HEIGHT; idx = idx + 4096) {
+                for (int idx = BASE_COEFFICINT; idx <= WIDTH * HEIGHT; idx = idx + BASE_COEFFICINT) {
 
                     coefficientNum = idx;
-                    int m = coefficientNum / 4096;
+                    int m = coefficientNum / BASE_COEFFICINT;
                     performDCT_TransformQuantize(redChannelMat, greenChannelMat, blueChannelMat, m);
                     performInverseDCTTransform();
 
