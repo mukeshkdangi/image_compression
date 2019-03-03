@@ -49,7 +49,7 @@ public class ImageCompression {
     double[][] redChannelMat_DWT = new double[HEIGHT][WIDTH];
     double[][] greenChannelMat_DWT = new double[HEIGHT][WIDTH];
     double[][] blueChannelMat_DWT = new double[HEIGHT][WIDTH];
-    
+
     BufferedImage DWTImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
     int[][] redChannelMat = new int[HEIGHT][WIDTH];
@@ -236,6 +236,7 @@ public class ImageCompression {
      * @param matrix : Matrix A
      * @return Transposed Matrix of A
      */
+
     private static double[][] performMatrixTranspose(double[][] matrix) {
         double[][] tempMat = new double[HEIGHT][WIDTH];
         for (int row = 0; row < HEIGHT; row++)
@@ -278,6 +279,7 @@ public class ImageCompression {
     /**
      * @return Low and High Pass decomposition
      */
+
     private double[] decompositionStep(double[] array, int height) {
         double[] dArray = Arrays.copyOf(array, array.length);
         for (int index = 0; index < height / 2; index++) {
