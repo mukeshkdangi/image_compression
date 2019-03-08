@@ -1,0 +1,13 @@
+READMe
+
+How to compile ?
+javac *.java
+
+How to run ?
+Question 5[DCT/DWT]
+
+java ImageCompression Lenna.rgb  26214
+java ImageCompression Lenna.rgb   13107
+
+Question 6 [Progressive Analysis of DC]
+java ImageCompression Lenna.rgb   -1 
